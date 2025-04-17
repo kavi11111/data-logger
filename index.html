@@ -282,12 +282,10 @@
         }
 
         .settings-section {
-            background: var(--card-bg);
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 30px;
             box-shadow: var(--shadow);
-            border: 1px solid var(--border);
         }
 
         .settings-section-header {
@@ -628,7 +626,7 @@
         <header>
             <div class="container">
                 <h1>iM2M Terminal : CSL1601</h1>
-                <p>Cellcomm Solutions Ltd.</p>
+                <p>Tridel Technologies</p>
             </div>
         </header>
         
@@ -948,10 +946,7 @@
                 <h2>ADC Settings</h2>
                 
                 <div class="settings-form">
-                    <!-- ADC Parameter Setting Button -->
                     <button class="nav-button" onclick="showSection('adc-parameter')">ADC Parameter Setting</button>
-                    
-                    <!-- ADC Factory Calibration Setting Button -->
                     <button class="nav-button" onclick="showSection('adc-factory')">ADC Factory Calibration Setting</button>
 
                     <!-- ADC Sensor Configuration Section -->
@@ -1095,7 +1090,6 @@
                 <h2>COM Port Settings</h2>
                 
                 <div class="settings-form">
-                    <!-- Port Settings Table -->
                     <div class="settings-section">
                         <table class="com-port-table">
                             <tr>
@@ -1109,11 +1103,18 @@
                                 <td>RS-232</td>
                                 <td>
                                     <select>
-                                        <option value="115200" selected>115200</option>
+                                        <option value="9600" selected>9600</option>
+                                        <option value="19200">19200</option>
+                                        <option value="38400">38400</option>
+                                        <option value="57600">57600</option>
+                                        <option value="115200">115200</option>
                                     </select>
                                 </td>
                                 <td>
                                     <select>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
                                         <option value="8" selected>8</option>
                                     </select>
                                 </td>
@@ -1132,13 +1133,19 @@
                                 <td>RS-485</td>
                                 <td>
                                     <select>
-                                        <option value="9600" selected>9600</option>
+                                        <option value="9600">9600</option>
+                                        <option value="19200">19200</option>
+                                        <option value="38400">38400</option>
+                                        <option value="57600">57600</option>
+                                        <option value="115200" selected>115200</option>
                                     </select>
                                 </td>
                                 <td>
                                     <select>
-                                        <option value="8" selected>8</option>
-                                    </select>
+                                        <option value="5" selected>5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>                                  </select>
                                 </td>
                                 <td>
                                     <select>
@@ -1409,11 +1416,27 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Save/Restore -->
+            <div id="save-restore" class="main-content">
+                <h2>Save / Restore / Restart</h2>
+                
+                <div class="settings-form">
+                    <div class="settings-section" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh;">
+                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                            <button class="update-button" style="margin: 0; width: 300px; background-color: #4CAF50;">SAVE Changes</button>
+                            <button class="update-button" style="margin: 0; width: 300px; background-color: #f44336;">DISCARD Changes</button>
+                            <button class="update-button" style="margin: 0; width: 300px; background-color: #2196F3;">Re-store Factory DEFAULT</button>
+                            <button class="update-button" style="margin: 0; width: 300px; background-color: #ff9800;">SYSTEM RE-START(S)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <footer>
             <div class="footer-container" style="text-align: center;">
-                <p>Copyright © 2025 Cellcomm Solutions Ltd. All Rights Reserved. 16/04/2025</p>
+                <p>Copyright © 2025 Tridel Technologies. All Rights Reserved. 16/04/2025</p>
             </div>
         </footer>
     </div>
@@ -1514,11 +1537,8 @@
         });
 
         function showSection(sectionId) {
-            // Hide all sections
             document.getElementById('adc-parameter').style.display = 'none';
             document.getElementById('adc-factory').style.display = 'none';
-            
-            // Show selected section
             document.getElementById(sectionId).style.display = 'block';
         }
     </script>
