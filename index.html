@@ -292,7 +292,6 @@
             margin-top: 5px;
         }
 
-        /* General Settings Form Styles */
         .settings-form {
             max-width: 800px;
             margin: 0 auto;
@@ -577,7 +576,6 @@
         .clock-container {
             text-align: center;
             padding: 20px;
-            /* border: 1px solid var(--border); */
             border-radius: 8px;
         }
 
@@ -627,10 +625,7 @@
         .device-info-table tr:nth-child(even) {
             background-color: rgba(0, 0, 0, 0.02);
         }
-
-        
         .datamonitor button {
-
             background-color: var(--primary);
             border: none;
             color:white;
@@ -641,40 +636,25 @@
             margin: 4px 2px;
             cursor: pointer;
             border-radius: 16px;
-
         }
-
-
         .datamonitor button:hover {
-
             background-color: #29a0f6;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
         }
-
-
-
         .datamonitor button:active {
-
             transform: translateY(0);
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-            /* background-color: #1e3c5b; */
-
-
-
         }
 
         .data-monitor-table {
-
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
             background: var(--card-bg);
 
         }
-
-
 
         .data-monitor-table th,
 
@@ -686,8 +666,6 @@
 
         }
 
-
-
         .data-monitor-table th {
 
             background: var(--primary);
@@ -695,14 +673,11 @@
 
         }
 
-
-
         .data-monitor-table tr:nth-child(even) {
 
             background-color: rgba(0, 0, 0, 0.02);
 
         }
-
 
         .file-row {
             cursor: pointer;
@@ -763,6 +738,23 @@
         .cpu-file, .crd-file {
             display: none;
         }
+
+        .logout-button {
+            background: #ff6b6b;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            margin-left: 20px;
+        }
+
+        .logout-button:hover {
+            background: #fa5252;
+            transform: translateY(-1px);
+        }
     </style>
 </head>
 <body>
@@ -780,7 +772,6 @@
     </header>
     <div id="loginPage" class="login-container">
         <h2>TDL Login</h2><br>
-        <!-- <h5>Login Form</h5><br> -->
         <form class="login-form" id="loginForm">
           <div class="form-group">
             <input type="text" id="username" placeholder="Username" required>
@@ -811,7 +802,9 @@
                 </ul>
             </div>
         </nav>
-        
+        <div style="display: flex; justify-content: flex-end; margin-top: 10px; margin-right: 12px;">
+            <button class="logout-button" id="logoutBtn">Logout</button>
+        </div>
         <div class="container">
             <!-- Live View -->
             <div id="live-view" class="main-content">
@@ -1659,6 +1652,12 @@
             refreshButton.addEventListener('click', function() {
                 const selectedDrive = document.querySelector('.drive-row.selected').getAttribute('data-drive');
                 alert(`Refreshing file list for ${selectedDrive}...`);
+            });
+
+            const logoutButton = document.getElementById('logoutBtn');
+            logoutButton.addEventListener('click', function() {
+                localStorage.clear();
+                window.location.reload();
             });
         });
 
