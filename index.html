@@ -612,6 +612,65 @@
         .device-info-table tr:nth-child(even) {
             background-color: rgba(0, 0, 0, 0.02);
         }
+        /* .datamonitor {
+  background:white;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: fit-content;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+} */
+
+        .datamonitor button {
+            background-color: var(--primary);
+            border: none;
+            color:white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 16px;
+        }
+
+        .datamonitor button:hover {
+            background-color: #29a0f6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .datamonitor button:active {
+            transform: translateY(0);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+            /* background-color: #1e3c5b; */
+
+        }
+        .data-monitor-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: var(--card-bg);
+        }
+
+        .data-monitor-table th,
+        .data-monitor-table td {
+            padding: 10px;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        .data-monitor-table th {
+            background: var(--primary);
+            color: white;
+        }
+
+        .data-monitor-table tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
     </style>
 </head>
 <body>
@@ -651,6 +710,7 @@
                     <li><a href="#device-info">Device Info/Status</a></li>
                     <li><a href="#save-restore">Save/Restore</a></li>
                     <li><a href="#lock-device">Lock Device</a></li>
+                    <li><a href="#data-monitor">Data Monitor</a></li>
                 </ul>
             </div>
         </nav>
@@ -1441,7 +1501,125 @@
                     </div>
                 </div>
             </div>
-        </div>
+            <!-- Data Monitor -->
+            <div id="data-monitor" class="main-content">
+                <div  class="button-group datamonitor">
+                    <button id="datainfo-btn"class="datainfo-btn" style="background:#025cb5" onclick="datatableinfo()">DataTableInfo</button>
+                    <button id="public-btn"class="publin-btn" onclick="public()">Public</button>
+                </div>
+                <div class="settings-form">
+                    <div class="settings-section">
+                        <table id="data-table-info" style="display: table;"  class="data-monitor-table">
+
+                            <tr>
+                                <td>Recorder No</td>
+                                <td>9</td>
+        
+                            </tr>
+                            <tr>
+                                <td>DataTableName(1)</td>
+                                <td>HGetLog</td>
+        
+                            </tr>
+                            <tr>
+                                <td>DataTableName(2)</td>
+                                <td>TenSec</td>
+        
+                            </tr>
+                            <tr>
+                                <td>DataTableName(3)</td>
+                                <td>OneMin</td>
+        
+                            </tr>
+                            <tr>
+                                <td>SkippedRecords(1)</td>
+                                <td>0</td>
+        
+                            </tr>
+                            <tr>
+                                <td>SkippedRecords(2)</td>
+                                <td>0</td>
+        
+                            </tr>
+                            <tr>
+                                <td>SkippedRecords(3)</td>
+                                <td>0</td>
+        
+                            </tr>
+                            <tr>
+                                <td>SkippedRecords(4)</td>
+                                <td>0</td>
+        
+                            </tr>
+                            <tr>
+                                <td>DataRecordSize(1,1)</td>
+                                <td>100</td>
+        
+                            </tr>
+                            <tr>
+                                <td>DataRecordSize(1,2)</td>
+                                <td>0</td>
+        
+                            </tr>
+                        </table>
+                        <table id="public-table" style="display: none;" class="data-monitor-table">
+
+                            <tr>
+                                <td>DataTableName(1)</td>
+                                <td>9</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>DataTableName(2)</td>
+                                <td>HGetLog</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Recorde No</td>
+                                <td>TenSec</td>
+        
+                            </tr>
+                            <tr>
+                                <td>DataTableName(3)</td>
+                                <td>OneMin</td>
+        
+                            </tr>
+                            <tr>
+                                <td>SkippedRecords(1)</td>
+                                <td>0</td>
+        
+                            </tr>
+                            <tr>
+                                <td>SkippedRecords(2)</td>
+                                <td>0</td>
+        
+                            </tr>
+                            <tr>
+                                <td>SkippedRecords(3)</td>
+                                <td>0</td>
+        
+                            </tr>
+                            <tr>
+                                <td>SkippedRecords(4)</td>
+                                <td>0</td>
+        
+                            </tr>
+                            <tr>
+                                <td>DataRecordSize(1,1)</td>
+                                <td>100</td>
+        
+                            </tr>
+                            <tr>
+                                <td>DataRecordSize(1,2)</td>
+                                <td>0</td>
+        
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- </div>
+        </div> -->
         
         <footer>
             <div class="footer-container" style="text-align: center;">
@@ -1550,6 +1728,38 @@
             document.getElementById('adc-factory').style.display = 'none';
             document.getElementById(sectionId).style.display = 'block';
         }
+        function datatableinfo() {
+            const table = document.getElementById("data-table-info");
+            const button = document.getElementById("datainfo-btn");
+            const public_table = document.getElementById("public-table");
+            const publicbutton = document.getElementById("public-btn");
+
+            if (table.style.display === "none") {
+                button.style.background="#025cb5";
+                publicbutton.style.background="var(--primary)"
+                table.style.display = "table";
+                public_table.style.display ="none"
+            } else {
+            table.style.display = "none";
+            }
+        }
+        function public() {
+            const table = document.getElementById("public-table");
+            const data_table = document.getElementById("data-table-info");
+            const button = document.getElementById("public-btn");
+            const databutton = document.getElementById("datainfo-btn");
+
+
+            if (table.style.display === "none") {
+                button.style.background="#025cb5"
+                databutton.style.background="var(--primary)"
+                table.style.display = "table";
+                data_table.style.display ="none"
+            } else {
+            table.style.display = "none";
+            }
+        }
+        
     </script>
 </body>
 </html>
