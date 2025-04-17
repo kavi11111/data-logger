@@ -164,17 +164,20 @@
 
         .login-container {
             max-width: 400px;
-            margin: 200px auto;
+            margin: 5% auto;
             padding: 30px;
             background: var(--card-bg);
             border-radius: 10px;
             box-shadow: var(--shadow);
         }
+        .login-container h2{
+            text-align: center;
+        }
 
         .login-form {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 5px;
         }
 
         .login-form input {
@@ -612,23 +615,29 @@
     </style>
 </head>
 <body>
-    <div id="loginPage" class="login-container">
-        <h2>iM2M Terminal Login</h2>
-        <form class="login-form" id="loginForm">
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <p class="error-message" id="errorMessage">Invalid credentials</p>
-            <button type="submit">Login</button>
-        </form>
-    </div>
+    <header>
+        <div class="container">
+            <h1>TDL Control Panel</h1>
+            <p>Tridel Technologies</p>
+        </div>
+    </header>
+  <div id="loginPage" class="login-container">
+    <h2>TDL Login</h2><br>
+    <!-- <h5>Login Form</h5><br> -->
+    <form class="login-form" id="loginForm">
+      <div class="form-group">
+        <input type="text" id="username" placeholder="Username" required>
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+      <p class="error-message" id="errorMessage">Invalid credentials</p>
+      <button type="submit">Login</button>
+    </form>
+  </div>
 
     <div id="mainPage" style="display: none;">
-        <header>
-            <div class="container">
-                <h1>iM2M Terminal : CSL1601</h1>
-                <p>Tridel Technologies</p>
-            </div>
-        </header>
+
         
         <nav>
             <div class="nav-div">
